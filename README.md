@@ -1,6 +1,6 @@
 # Image Analyzer 
 This a tool for process medical images. 
-## Dependecies:
+## Dependencies:
 - pip install PyQt5
 - pip install pydicom
 - pip install opencv-python
