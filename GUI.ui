@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>999</width>
+    <width>995</width>
     <height>674</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>ImageAnalyzer</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QMainWindow{
@@ -21,9 +21,28 @@ background-color: rgb(0, 0, 0);
 background-color: rgb(0, 0, 0);
 }
 
-#Image{
-background-color:rgb(18, 18, 18);
+QGraphicsView{
+background-color:rgb(0, 0, 0);
 }
+
+#tabWidget{
+background-color:rgb(0,0,0);
+}
+
+QTabBar::tab {
+  background: rgb(22, 24, 30);
+  color: white;
+  padding: 10px;
+
+ }
+QTabWidget::pane { 
+   border: 1px solid rgb(5, 75, 87);
+	background: rgb(0, 0, 0);
+}
+
+ QTabBar::tab:selected {
+  border: 2px solid rgb(5, 75, 87);
+ }
 
 #seriesView{
 background-color:rgb(18, 18, 18);
@@ -40,31 +59,78 @@ color:rgb(186, 189, 182)
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_2">
+   <layout class="QVBoxLayout" name="verticalLayout_3">
     <item>
-     <widget class="QLabel" name="titleLabel">
-      <property name="text">
-       <string>ImageAnalyzer </string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
+     <layout class="QHBoxLayout" name="horizontalLayout_8">
+      <item>
+       <widget class="QToolButton" name="openBtn">
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>icons/folder-open.png</normaloff>icons/folder-open.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="viewsBtn">
+        <property name="text">
+         <string>...</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="save_im">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="toolTip">
+         <string notr="true" extracomment="Save Image">Save Image</string>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../PyQt-Image-Viewer-master/icons/download.png</normaloff>../PyQt-Image-Viewer-master/icons/download.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="3,1,7">
+     <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="2,0,7">
       <item>
        <widget class="QWidget" name="widget" native="true">
         <layout class="QVBoxLayout" name="verticalLayout_4">
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_5">
-           <item>
-            <widget class="QPushButton" name="openBtn">
-             <property name="text">
-              <string>Directory</string>
-             </property>
-            </widget>
-           </item>
            <item>
             <spacer name="horizontalSpacer_3">
              <property name="orientation">
@@ -86,7 +152,7 @@ color:rgb(186, 189, 182)
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
            <item>
-            <widget class="QPushButton" name="pushButton_3">
+            <widget class="QPushButton" name="process">
              <property name="text">
               <string>Process ROI</string>
              </property>
@@ -108,7 +174,21 @@ color:rgb(186, 189, 182)
           </layout>
          </item>
          <item>
-          <widget class="QTextBrowser" name="console"/>
+          <widget class="QTabWidget" name="tabWidget">
+           <property name="currentIndex">
+            <number>0</number>
+           </property>
+           <widget class="QWidget" name="tab">
+            <attribute name="title">
+             <string>Tab 1</string>
+            </attribute>
+           </widget>
+           <widget class="QWidget" name="tab_2">
+            <attribute name="title">
+             <string>Tab 2</string>
+            </attribute>
+           </widget>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -142,7 +222,7 @@ color:rgb(186, 189, 182)
               </property>
               <property name="icon">
                <iconset>
-                <normaloff>../../PyQt-Image-Viewer-master/icons/line.png</normaloff>../../PyQt-Image-Viewer-master/icons/line.png</iconset>
+                <normaloff>icons/line.png</normaloff>icons/line.png</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -165,7 +245,7 @@ color:rgb(186, 189, 182)
               </property>
               <property name="icon">
                <iconset>
-                <normaloff>../../PyQt-Image-Viewer-master/icons/zoom-in.png</normaloff>../../PyQt-Image-Viewer-master/icons/zoom-in.png</iconset>
+                <normaloff>icons/zoom-in.png</normaloff>icons/zoom-in.png</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -185,7 +265,7 @@ color:rgb(186, 189, 182)
               </property>
               <property name="icon">
                <iconset>
-                <normaloff>../../PyQt-Image-Viewer-master/icons/zoom-out.png</normaloff>../../PyQt-Image-Viewer-master/icons/zoom-out.png</iconset>
+                <normaloff>icons/zoom-out.png</normaloff>icons/zoom-out.png</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -208,7 +288,7 @@ color:rgb(186, 189, 182)
               </property>
               <property name="icon">
                <iconset>
-                <normaloff>../../PyQt-Image-Viewer-master/icons/enlarge2.png</normaloff>../../PyQt-Image-Viewer-master/icons/enlarge2.png</iconset>
+                <normaloff>icons/enlarge2.png</normaloff>icons/enlarge2.png</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -231,7 +311,7 @@ color:rgb(186, 189, 182)
               </property>
               <property name="icon">
                <iconset>
-                <normaloff>../../PyQt-Image-Viewer-master/icons/rectangle.png</normaloff>../../PyQt-Image-Viewer-master/icons/rectangle.png</iconset>
+                <normaloff>icons/rectangle.png</normaloff>icons/rectangle.png</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -263,7 +343,7 @@ color:rgb(186, 189, 182)
               </property>
               <property name="icon">
                <iconset>
-                <normaloff>../../PyQt-Image-Viewer-master/icons/move.png</normaloff>../../PyQt-Image-Viewer-master/icons/move.png</iconset>
+                <normaloff>icons/move.png</normaloff>icons/move.png</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -275,7 +355,7 @@ color:rgb(186, 189, 182)
                <bool>true</bool>
               </property>
               <property name="checked">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
               <property name="toolButtonStyle">
                <enum>Qt::ToolButtonIconOnly</enum>
@@ -298,7 +378,53 @@ color:rgb(186, 189, 182)
               </property>
               <property name="icon">
                <iconset>
-                <normaloff>../../PyQt-Image-Viewer-master/icons/undo2.png</normaloff>../../PyQt-Image-Viewer-master/icons/undo2.png</iconset>
+                <normaloff>icons/undo2.png</normaloff>icons/undo2.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>20</width>
+                <height>20</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="redo">
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="toolTip">
+               <string>Redo</string>
+              </property>
+              <property name="text">
+               <string>...</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>../PyQt-Image-Viewer-master/icons/redo2.png</normaloff>../PyQt-Image-Viewer-master/icons/redo2.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>20</width>
+                <height>20</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="clear_all">
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="toolTip">
+               <string>Clear All</string>
+              </property>
+              <property name="text">
+               <string>...</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>../PyQt-Image-Viewer-master/icons/loop2.png</normaloff>../PyQt-Image-Viewer-master/icons/loop2.png</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -328,7 +454,26 @@ color:rgb(186, 189, 182)
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_5">
           <item>
-           <widget class="QGraphicsView" name="Image"/>
+           <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="3,1">
+            <item>
+             <widget class="QGraphicsView" name="Image"/>
+            </item>
+            <item>
+             <widget class="QWidget" name="views" native="true">
+              <layout class="QVBoxLayout" name="verticalLayout_2">
+               <item>
+                <widget class="QGraphicsView" name="Image_2"/>
+               </item>
+               <item>
+                <widget class="QGraphicsView" name="Image_3"/>
+               </item>
+               <item>
+                <widget class="QGraphicsView" name="graphicsView"/>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
           </item>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="8">
@@ -360,7 +505,7 @@ color:rgb(186, 189, 182)
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>999</width>
+     <width>995</width>
      <height>27</height>
     </rect>
    </property>

@@ -1,4 +1,4 @@
-from PyQt5.QtGui import QPixmap, QImage, QPainter, QPen
+from PyQt5.QtGui import QPixmap, QImage, QPainter, QPen, QColor
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QGraphicsView, QGraphicsScene
 from PyQt5.QtCore import Qt, QRectF
@@ -6,6 +6,7 @@ import pydicom
 import numpy as np
 import cv2
 import os 
+from contours import Contour
 
 class Viewer:
     def __init__(self, qgraphics, seriesList):
@@ -24,15 +25,19 @@ class Viewer:
         self.Image.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
 
         self.root = None
-        self.pen = QPen(Qt.red, 5, Qt.SolidLine)
+        self.color = QColor(17, 173, 186)
+        self.pen = QPen(self.color, 5, Qt.SolidLine)
         self.lastPoint = None
 
         self.processedImage = None
         self.qpixmap = None
+        self.imgArray = None
 
         self.seriesList.itemSelectionChanged.connect(self.chooseImage)
         self._connectEvents()
         self.delta = None
+
+        self.lineOfPoints = Contour()
 
     def _connectEvents(self):
         self.Image.mousePressEvent = self.mousePressEvent
@@ -40,7 +45,6 @@ class Viewer:
         self.Image.mouseMoveEvent = self.mouseMoveEvent
         self.Image.resizeEvent = self.resizeEvent
         self.Image.wheelEvent = self.wheelEvent
-
 
     def fitInView(self):
         rect = QRectF(self._pixmapHandle.pixmap().rect())
@@ -54,6 +58,11 @@ class Viewer:
                 factor = min(viewrect.width() / scenerect.width(), viewrect.height() / scenerect.height())
                 self.Image.scale(factor, factor)
 
+    def clear(self):
+        """"""
+        self.clearImage()
+        self.chooseImage()
+        self.points = []
 
     def hasImage(self):
         return self._pixmapHandle is not None
@@ -79,15 +88,17 @@ class Viewer:
         Returns:
             Qimage | None
         """
-        if selg.hasImage():
+        if self.hasImage():
             return self._pixmapHandle.pixmap().toImage()
         return None
+
+    def getImageArray(self):
+        return self.imgArray 
 
     def updateView(self):
         if not self.hasImage():
             return 
         self.Image.fitInView(self.Image.sceneRect(), Qt.KeepAspectRatio)
-
 
 
     def wheelEvent(self, event):
@@ -126,19 +137,22 @@ class Viewer:
         pass
 
     def mousePressEvent(self, event):
-        
+        """ When the mouse is pressed  do this
+        """     
         scenePos = self.Image.mapToScene(event.pos())
         if event.button() == Qt.LeftButton:
            if self.draw:
               print("dibujar")
            if self.drag:
               self.Image.setDragMode(QGraphicsView.ScrollHandDrag)
-        QGraphicsView.mousePressEvent(self.Image, event)
         self.lastPoint = event.pos()
-        #super(Viewer, self.Image).mousePressEvent(event)
+        self.lineOfPoints.addPoint([event.pos().x(),event.pos().y()])
+        #Do whatever was on the default mousePressEvent fucntion of QgraphicsView object            
+        QGraphicsView.mousePressEvent(self.Image, event)
 
     def mouseReleaseEvent(self, event):
-        print("Release")
+        self.lineOfPoints.addPoint([event.pos().x(),event.pos().y()])
+        pass
 
     def mouseMoveEvent(self, event):
         if self.draw:
@@ -154,13 +168,10 @@ class Viewer:
                 painter.end()
 
                 self._pixmapHandle.setPixmap(pixmap)
-                self.lastPoint = event.pos()
                 self.fitInView()
-                #painter.drawPixmap(rect, pixmap)                
-                #painter.drawLine(self.lastPoint, event.pos())
+                self.lastPoint = event.pos()
 
-
-
+                self.lineOfPoints.addPoint([event.pos().x(), event.pos().y()])
         QGraphicsView.mouseMoveEvent(self.Image, event)
 
     def zoomPlus(self):
@@ -199,6 +210,7 @@ class Viewer:
         """
         item = self.seriesList.currentItem()
         img = self.readDicomImage(self.root + "/" + item.text())
+        self.imgArray = img
         self.displayImage(img)
 
     def displayImage(self, img):
@@ -255,7 +267,7 @@ class Viewer:
         """read dicom image
         Args:
             fname: filename
-            copy: if It's True return numpy.copy()
+            copy: if It's True returns numpy.copy()
         Returns 
             img: numpy array
         """
@@ -273,3 +285,29 @@ class Viewer:
         for root, _ , files in os.walk(path):
             self.root = root
             self.seriesList.addItems(sorted(files))
+
+    def processRoi(self):
+        #print(self.points)
+        #print(self.lineOfPoints.getPoints())
+        #point = np.array()
+        img = self.getImageArray()
+        pixmap = self.getCurrentPixmap()
+        qimage = self.getCurrentImage()
+        w1, h1 = img.shape[0], img.shape[1]
+        w2, h2 = pixmap.width(), pixmap.height()
+        #print(w1, h1)
+        #print(w2, h2)
+        factorX = w2/w1
+        factorY = h2/h1
+        #print(factorX, factorY)
+        self.lineOfPoints.scalePoints(factorX, factorY)
+        cnt = np.array([self.lineOfPoints.getPoints()])
+        img = cv2.drawContours(img, cnt, -1, (20,255,255), 1)
+        area = cv2.contourArea(cnt[0])
+        print("Area:  ",area)
+        #print("Area2: ",self.lineOfPoints.findArea())
+        #self.displayImage(img)
+        self.lineOfPoints.clear()
+        #
+        #self.displayImage(img)
+        #cv2.imwrite('lines.png', img)
