@@ -9,14 +9,6 @@ import sys, os, threading, re
 import numpy as np
 from Viewer import Viewer
 
-#/home/jason/Documentos/Python/TESIS/anonymize/Anonymized - 117/Encefalo/eFLAIR_longTR - 602/
-#Area
-#Glsm
-#
-
-#
-# Segmentación Manual
-# Segmentación Automática
 
 class App(QMainWindow):
 	def __init__(self):
@@ -37,7 +29,6 @@ class App(QMainWindow):
 		self.ui.toggle_move.toggled.connect(self.action_move)
 		self.ui.clear_all.clicked.connect(self.action_clear)
 		self.ui.viewsBtn.clicked.connect(self.action_views)
-
 		self.ui.process.clicked.connect(self.action_process)
 
 	def action_views(self):
