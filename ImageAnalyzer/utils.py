@@ -1,8 +1,5 @@
 import cv2
 import numpy as np
-import pydicom
-import time
-import cython
 
 
 # 1. Dibujar el ROI

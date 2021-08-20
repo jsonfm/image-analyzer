@@ -1,0 +1,1133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1474</width>
+    <height>790</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>ImageAnalyzer</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow{
+background-color: rgb(0, 0, 0);
+}
+#centralwidget {
+background-color: rgb(0, 0, 0);
+}
+
+QGraphicsView{
+background-color:rgb(0, 0, 0);
+border: 2px solid blue;
+}
+
+QTextBrowser {
+background-color:rgb(18,18,18);
+}
+
+#tabWidget{
+background-color:rgb(0,0,0);
+}
+
+QTabBar::tab {
+  background: rgb(22, 24, 30);
+  color: white;
+  padding: 10px;
+
+ }
+QTabWidget::pane { 
+   border: 1px solid rgb(5, 75, 87);
+	background: rgb(0, 0, 0);
+}
+
+ QTabBar::tab:selected {
+  border: 2px solid rgb(5, 75, 87);
+ }
+
+QListWidget{
+background-color:rgb(18, 18, 18);
+color:rgb(136, 138, 133);
+}
+
+#console {
+background-color:rgb(18, 18, 18);
+}
+
+/*Labels*/
+QLabel{
+color: rgb(230, 230, 236);
+font: 87 bold 11pt &quot;Inter&quot;;
+}
+#titleLabel{
+color:rgb(186, 189, 182)
+}
+
+/*QCheckBoxes*/
+QCheckBox{
+color: rgb(173, 173, 186);
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,0,10,0,1">
+    <item>
+     <widget class="QWidget" name="leftPanel" native="true">
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <widget class="QLabel" name="label_11">
+         <property name="text">
+          <string>LAYERS</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="Line" name="line_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_6">
+         <item>
+          <widget class="QListWidget" name="listWidget"/>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout">
+           <item>
+            <widget class="QLabel" name="label_4">
+             <property name="text">
+              <string>MAIN TOOLBAR</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="Line" name="line_7">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_11">
+           <item>
+            <widget class="QToolButton" name="cursorBtn">
+             <property name="text">
+              <string>...</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>../icons/cursor.svg</normaloff>../icons/cursor.svg</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>18</width>
+               <height>18</height>
+              </size>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QToolButton" name="dragBtn">
+             <property name="text">
+              <string>...</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>../icons/move.png</normaloff>../icons/move.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>18</width>
+               <height>18</height>
+              </size>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QTabWidget" name="tabWidget">
+           <property name="currentIndex">
+            <number>0</number>
+           </property>
+           <widget class="QWidget" name="tab">
+            <attribute name="title">
+             <string>Brush</string>
+            </attribute>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_6">
+               <item>
+                <widget class="QLabel" name="label_6">
+                 <property name="text">
+                  <string>Size:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSpinBox" name="spinBox_2">
+                 <property name="value">
+                  <number>10</number>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QSlider" name="horizontalSlider_2">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="tab_2">
+            <attribute name="title">
+             <string>Polygon</string>
+            </attribute>
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_7">
+               <item>
+                <widget class="QLabel" name="label_8">
+                 <property name="text">
+                  <string>Seg. Leng.</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSpinBox" name="spinBox_3"/>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QSlider" name="horizontalSlider_3">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>SEGMENTATION</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line_6">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Active Label</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="3,0">
+           <item>
+            <widget class="QComboBox" name="roiLabel">
+             <item>
+              <property name="text">
+               <string>No Label</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Label 1</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Label 2</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Label 3</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Label 4</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Label 5</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Label 6</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Label 7</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Label 8</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item>
+            <widget class="QToolButton" name="colorLabelBtn">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>Label Opacity</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <item>
+            <widget class="QSpinBox" name="spinBox"/>
+           </item>
+           <item>
+            <widget class="QSlider" name="horizontalSlider">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_15">
+         <property name="text">
+          <string>INFO</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="Line" name="line_11">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_16">
+         <item>
+          <widget class="QLabel" name="label_16">
+           <property name="text">
+            <string>Volume (mm3)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_17">
+           <property name="text">
+            <string>0.00</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_18">
+           <property name="text">
+            <string>Int. </string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_19">
+           <property name="text">
+            <string>0.00</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="Line" name="line">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="ImagesContainer" native="true">
+      <layout class="QGridLayout" name="imag">
+       <item row="0" column="0">
+        <widget class="QWidget" name="imageContainer1" native="true">
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <layout class="QVBoxLayout" name="imageLabeled1" stretch="0,8">
+            <item>
+             <widget class="QLabel" name="imageName1">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGraphicsView" name="image1">
+              <property name="minimumSize">
+               <size>
+                <width>380</width>
+                <height>300</height>
+               </size>
+              </property>
+              <property name="mouseTracking">
+               <bool>true</bool>
+              </property>
+              <property name="tabletTracking">
+               <bool>false</bool>
+              </property>
+              <property name="sizeAdjustPolicy">
+               <enum>QAbstractScrollArea::AdjustIgnored</enum>
+              </property>
+              <property name="transformationAnchor">
+               <enum>QGraphicsView::NoAnchor</enum>
+              </property>
+              <property name="viewportUpdateMode">
+               <enum>QGraphicsView::SmartViewportUpdate</enum>
+              </property>
+              <property name="rubberBandSelectionMode">
+               <enum>Qt::ContainsItemShape</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="imagePanel1">
+            <item>
+             <widget class="QToolButton" name="imageLayoutBtn1">
+              <property name="text">
+               <string>...</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>../icons/enlarge2.png</normaloff>
+                <normalon>../icons/grid.svg</normalon>../icons/enlarge2.png</iconset>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="captureImageBtn1">
+              <property name="text">
+               <string>..</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>../icons/camera.svg</normaloff>../icons/camera.svg</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>18</width>
+                <height>18</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QScrollBar" name="ImageSelector1">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QWidget" name="imageContainer4" native="true">
+         <layout class="QHBoxLayout" name="imx">
+          <item>
+           <widget class="QGraphicsView" name="image3D">
+            <property name="minimumSize">
+             <size>
+              <width>380</width>
+              <height>300</height>
+             </size>
+            </property>
+            <property name="mouseTracking">
+             <bool>true</bool>
+            </property>
+            <property name="tabletTracking">
+             <bool>false</bool>
+            </property>
+            <property name="sizeAdjustPolicy">
+             <enum>QAbstractScrollArea::AdjustIgnored</enum>
+            </property>
+            <property name="transformationAnchor">
+             <enum>QGraphicsView::NoAnchor</enum>
+            </property>
+            <property name="viewportUpdateMode">
+             <enum>QGraphicsView::SmartViewportUpdate</enum>
+            </property>
+            <property name="rubberBandSelectionMode">
+             <enum>Qt::ContainsItemShape</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QWidget" name="imageContainer3" native="true">
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <layout class="QVBoxLayout" name="imageLabeled3" stretch="0,8">
+            <property name="sizeConstraint">
+             <enum>QLayout::SetDefaultConstraint</enum>
+            </property>
+            <item>
+             <widget class="QLabel" name="imageName3">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGraphicsView" name="image3">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>380</width>
+                <height>300</height>
+               </size>
+              </property>
+              <property name="baseSize">
+               <size>
+                <width>380</width>
+                <height>300</height>
+               </size>
+              </property>
+              <property name="mouseTracking">
+               <bool>true</bool>
+              </property>
+              <property name="tabletTracking">
+               <bool>false</bool>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="sizeAdjustPolicy">
+               <enum>QAbstractScrollArea::AdjustIgnored</enum>
+              </property>
+              <property name="transformationAnchor">
+               <enum>QGraphicsView::NoAnchor</enum>
+              </property>
+              <property name="resizeAnchor">
+               <enum>QGraphicsView::AnchorViewCenter</enum>
+              </property>
+              <property name="viewportUpdateMode">
+               <enum>QGraphicsView::SmartViewportUpdate</enum>
+              </property>
+              <property name="rubberBandSelectionMode">
+               <enum>Qt::ContainsItemBoundingRect</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="imagePanel3">
+            <item>
+             <widget class="QToolButton" name="imageLayoutBtn3">
+              <property name="text">
+               <string>...</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>../icons/enlarge2.png</normaloff>
+                <normalon>../icons/grid.svg</normalon>../icons/enlarge2.png</iconset>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="captureImageBtn3">
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>../icons/camera.svg</normaloff>../icons/camera.svg</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>18</width>
+                <height>18</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="Line" name="line_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer_4">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QWidget" name="imageContainer2" native="true">
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <layout class="QVBoxLayout" name="imageLabeled2" stretch="0,8">
+            <item>
+             <widget class="QLabel" name="imageName2">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGraphicsView" name="image2">
+              <property name="mouseTracking">
+               <bool>true</bool>
+              </property>
+              <property name="tabletTracking">
+               <bool>false</bool>
+              </property>
+              <property name="sizeAdjustPolicy">
+               <enum>QAbstractScrollArea::AdjustIgnored</enum>
+              </property>
+              <property name="transformationAnchor">
+               <enum>QGraphicsView::NoAnchor</enum>
+              </property>
+              <property name="viewportUpdateMode">
+               <enum>QGraphicsView::SmartViewportUpdate</enum>
+              </property>
+              <property name="rubberBandSelectionMode">
+               <enum>Qt::ContainsItemShape</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="imagePanel2">
+            <item>
+             <widget class="QToolButton" name="imageLayoutBtn2">
+              <property name="text">
+               <string>...</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>../icons/enlarge2.png</normaloff>
+                <normalon>../icons/grid.svg</normalon>../icons/enlarge2.png</iconset>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="captureImageBtn2">
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>../icons/camera.svg</normaloff>../icons/camera.svg</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>18</width>
+                <height>18</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer_5">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="Line" name="line_4">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="rightPanel">
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_13">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_14">
+          <item>
+           <widget class="QLabel" name="label_5">
+            <property name="text">
+             <string>AUTO-SEGMENT</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="Line" name="line_5">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="AutoSegmentationChoose">
+            <item>
+             <property name="text">
+              <string>Hippocampus</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QPushButton" name="startSegmentationBtn">
+          <property name="text">
+           <string>START</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_12">
+          <property name="text">
+           <string>TEXTURES FEAT.</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="Line" name="line_8">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QGridLayout" name="gridLayout_2">
+          <item row="1" column="1">
+           <widget class="QCheckBox" name="enableShape">
+            <property name="text">
+             <string>Shape</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QCheckBox" name="enableFirstOrder">
+            <property name="text">
+             <string>First Order</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QCheckBox" name="enableGLCM">
+            <property name="text">
+             <string>GLCM</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QCheckBox" name="enableGLSZM">
+            <property name="text">
+             <string>GLSZM</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QCheckBox" name="enableGLRLM">
+            <property name="text">
+             <string>GLRLM</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QCheckBox" name="enableGLDM">
+            <property name="text">
+             <string>GLDM</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="QCheckBox" name="enableNGTDM">
+            <property name="text">
+             <string>NGTDM</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QPushButton" name="extractFeaturesBtn">
+          <property name="text">
+           <string>EXTRACT</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QProgressBar" name="progressBar">
+        <property name="value">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_14">
+        <property name="text">
+         <string>PREDICT</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="Line" name="line_9">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="LoadCSVBtn">
+        <property name="text">
+         <string>LOAD CSV</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="2" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_8">
+          <item>
+           <widget class="QCheckBox" name="checkBox_6">
+            <property name="text">
+             <string>PCA</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="spinBox_4">
+            <property name="value">
+             <number>3</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="0">
+         <widget class="QCheckBox" name="checkBox_5">
+          <property name="text">
+           <string>SVM</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QComboBox" name="comboBox_3">
+          <item>
+           <property name="text">
+            <string>Sclerosis (EMT)</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_15">
+        <item>
+         <widget class="QLabel" name="label_13">
+          <property name="text">
+           <string>RESULTS</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="Line" name="line_10">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QTextBrowser" name="textBrowser"/>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_10">
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_4">
+          <property name="text">
+           <string>clear</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1474</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuHola">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionOpenFile"/>
+    <addaction name="actionAddAnotherImage"/>
+    <addaction name="actionOpenSeries"/>
+   </widget>
+   <widget class="QMenu" name="menuSegmentation">
+    <property name="title">
+     <string>Segmentation</string>
+    </property>
+    <addaction name="actionLoad_Segmentation"/>
+    <addaction name="actionSave_actual_segmentation"/>
+    <addaction name="actionSave_as"/>
+   </widget>
+   <addaction name="menuHola"/>
+   <addaction name="menuSegmentation"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionOpenFile">
+   <property name="text">
+    <string>Open Image</string>
+   </property>
+  </action>
+  <action name="actionOpenSeries">
+   <property name="text">
+    <string>Open Series</string>
+   </property>
+  </action>
+  <action name="actionLoad_Segmentation">
+   <property name="text">
+    <string>Load Segmentation</string>
+   </property>
+  </action>
+  <action name="actionSave_actual_segmentation">
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionSave_as">
+   <property name="text">
+    <string>Save as</string>
+   </property>
+  </action>
+  <action name="actionAddAnotherImage">
+   <property name="text">
+    <string>Add Another Image</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

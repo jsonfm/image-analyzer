@@ -1,1 +1,5 @@
 __pycache__/
+venv/
+data/
+.qt_for_python/
+ImageAnalyzer/
