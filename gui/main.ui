@@ -147,6 +147,9 @@ color: rgb(173, 173, 186);
              <property name="checkable">
               <bool>true</bool>
              </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
             </widget>
            </item>
            <item>
@@ -166,6 +169,9 @@ color: rgb(173, 173, 186);
              </property>
              <property name="checkable">
               <bool>true</bool>
+             </property>
+             <property name="checked">
+              <bool>false</bool>
              </property>
             </widget>
            </item>
@@ -187,7 +193,7 @@ color: rgb(173, 173, 186);
          <item>
           <widget class="QTabWidget" name="tabWidget">
            <property name="currentIndex">
-            <number>0</number>
+            <number>1</number>
            </property>
            <widget class="QWidget" name="tab">
             <attribute name="title">
@@ -204,7 +210,7 @@ color: rgb(173, 173, 186);
                 </widget>
                </item>
                <item>
-                <widget class="QSpinBox" name="spinBox_2">
+                <widget class="QSpinBox" name="sizeBrushSpin">
                  <property name="value">
                   <number>10</number>
                  </property>
@@ -214,6 +220,12 @@ color: rgb(173, 173, 186);
              </item>
              <item>
               <widget class="QSlider" name="horizontalSlider_2">
+               <property name="maximum">
+                <number>30</number>
+               </property>
+               <property name="value">
+                <number>10</number>
+               </property>
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
                </property>
@@ -445,11 +457,28 @@ color: rgb(173, 173, 186);
           <item>
            <layout class="QVBoxLayout" name="imageLabeled1" stretch="0,8">
             <item>
-             <widget class="QLabel" name="imageName1">
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
+             <layout class="QHBoxLayout" name="imageInfoContainer1">
+              <item>
+               <widget class="QLabel" name="imageName1">
+                <property name="text">
+                 <string>Image Name 1</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="imageSliceNo1">
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>0/30</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
             <item>
              <widget class="QGraphicsView" name="image1">
@@ -516,7 +545,31 @@ color: rgb(173, 173, 186);
              </widget>
             </item>
             <item>
-             <widget class="QScrollBar" name="ImageSelector1">
+             <widget class="Line" name="line_12">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="zoomResetBtn1">
+              <property name="text">
+               <string>...</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>../icons/fullscreen-exit.png</normaloff>../icons/fullscreen-exit.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>18</width>
+                <height>18</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QScrollBar" name="imageScroll1">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
               </property>
@@ -570,11 +623,25 @@ color: rgb(173, 173, 186);
              <enum>QLayout::SetDefaultConstraint</enum>
             </property>
             <item>
-             <widget class="QLabel" name="imageName3">
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
+             <layout class="QHBoxLayout" name="imageInfoContainer3">
+              <item>
+               <widget class="QLabel" name="imageName3">
+                <property name="text">
+                 <string>Image Name 3</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="imageSliceNo3">
+                <property name="text">
+                 <string>0/30</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
             <item>
              <widget class="QGraphicsView" name="image3">
@@ -669,17 +736,22 @@ color: rgb(173, 173, 186);
              </widget>
             </item>
             <item>
-             <spacer name="verticalSpacer_4">
+             <widget class="QToolButton" name="zoomResetBtn3">
+              <property name="text">
+               <string>...</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>../icons/fullscreen-exit.png</normaloff>../icons/fullscreen-exit.png</iconset>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QScrollBar" name="imageScroll3">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
               </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>40</height>
-               </size>
-              </property>
-             </spacer>
+             </widget>
             </item>
            </layout>
           </item>
@@ -692,11 +764,25 @@ color: rgb(173, 173, 186);
           <item>
            <layout class="QVBoxLayout" name="imageLabeled2" stretch="0,8">
             <item>
-             <widget class="QLabel" name="imageName2">
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
+             <layout class="QHBoxLayout" name="imageInfoContainer2">
+              <item>
+               <widget class="QLabel" name="imageName2">
+                <property name="text">
+                 <string>Image Name 2</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="imageSliceNo2">
+                <property name="text">
+                 <string>0/30</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
             <item>
              <widget class="QGraphicsView" name="image2">
@@ -757,17 +843,29 @@ color: rgb(173, 173, 186);
              </widget>
             </item>
             <item>
-             <spacer name="verticalSpacer_5">
+             <widget class="Line" name="line_13">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="zoomResetBtn2">
+              <property name="text">
+               <string>...</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>../icons/fullscreen-exit.png</normaloff>../icons/fullscreen-exit.png</iconset>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QScrollBar" name="imageScroll2">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
               </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>40</height>
-               </size>
-              </property>
-             </spacer>
+             </widget>
             </item>
            </layout>
           </item>
